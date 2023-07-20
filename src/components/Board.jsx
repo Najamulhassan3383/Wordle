@@ -5,15 +5,22 @@ import { MyContext } from "./MyContext";
 import { useContext } from "react";
 
 function Board() {
-  const { Board, setBoard } = useContext(MyContext);
+  const { Board, onLetter, onEnter, onBackspace } = useContext(MyContext);
 
   const handleKeyDown = useCallback(
     (e) => {
-      let newBoard = [...Board];
-      newBoard[0][0] = e.key;
-      setBoard(newBoard);
+      //check if the key pressed is a letter
+      if (e.keyCode >= 65 && e.keyCode <= 90) {
+        onLetter(e.key);
+      } else if (e.keyCode === 13) {
+        onEnter();
+      } else if (e.keyCode === 8) {
+        onBackspace();
+      } else {
+        alert("you must press a letter");
+      }
     },
-    [Board, setBoard]
+    [onLetter, onEnter, onBackspace]
   );
 
   useEffect(() => {

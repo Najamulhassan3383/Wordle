@@ -7,13 +7,17 @@ function Keyboard() {
   const row1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const row2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const row3 = ["Z", "X", "C", "V", "B", "N", "M"];
-  const { Board, setBoard } = useContext(MyContext);
+  const { onEnter, onBackspace, onLetter } = useContext(MyContext);
   const hanldeClick = (e) => {
-    let newBoard = [...Board];
-    newBoard[0][0] = e;
-    setBoard(newBoard);
-
-    console.log(e);
+    let ButtonPressed = e.trim();
+    ButtonPressed = ButtonPressed.toLowerCase();
+    if (ButtonPressed === "enter") {
+      onEnter();
+    } else if (ButtonPressed === "backspace") {
+      onBackspace();
+    } else {
+      onLetter(ButtonPressed);
+    }
   };
   return (
     <Container>
