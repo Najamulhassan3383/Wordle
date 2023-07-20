@@ -2,8 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 import Card from "./Card";
+import { useContext } from "react";
+import { MyContext } from "./MyContext";
 
-function Row({ number, word }) {
+function Row({ number }) {
+  const { Board } = useContext(MyContext);
+  const word = Board[number];
+  // console.log(word);
+
   return (
     <Container>
       {word.map((letter, index) => {

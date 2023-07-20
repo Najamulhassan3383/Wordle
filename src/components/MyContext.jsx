@@ -14,6 +14,8 @@ const MyContextProvider = ({ children }) => {
     column: 0,
   });
 
+  const correctLetter = "najam";
+
   const onLetter = (value) => {
     //check if we are the at the end
     if (currentAttemp.row === 6) {
@@ -80,6 +82,7 @@ const MyContextProvider = ({ children }) => {
         onLetter,
         onEnter,
         onBackspace,
+        correctLetter,
       }}
     >
       {children}

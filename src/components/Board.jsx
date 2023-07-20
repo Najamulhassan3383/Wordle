@@ -31,12 +31,12 @@ function Board() {
   }, [handleKeyDown]);
   return (
     <Container>
-      <Row number={0} word={Board[0]} />
-      <Row number={1} word={Board[1]} />
-      <Row number={2} word={Board[2]} />
-      <Row number={3} word={Board[3]} />
-      <Row number={4} word={Board[4]} />
-      <Row number={5} word={Board[5]} />
+      <Row number={0} />
+      <Row number={1} />
+      <Row number={2} />
+      <Row number={3} />
+      <Row number={4} />
+      <Row number={5} />
     </Container>
   );
 }
