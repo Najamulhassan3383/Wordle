@@ -52,9 +52,7 @@ const Container = styled.div`
   font-size: 20px;
   font-weight: 600;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  //   apply border
   border: 2px solid black;
-  //add a flig animation wiht final postion being the same
   transition: background-color;
   transition-duration: 1.4s;
   transition-delay: ${(props) => (props.animation ? `${props.delay}s` : "")};

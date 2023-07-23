@@ -5,7 +5,7 @@ import { MyContext } from "./MyContext";
 import { useContext } from "react";
 
 function Board() {
-  const { Board, onLetter, onEnter, onBackspace } = useContext(MyContext);
+  const { onLetter, onEnter, onBackspace } = useContext(MyContext);
 
   const handleKeyDown = useCallback(
     (e) => {
@@ -17,7 +17,7 @@ function Board() {
       } else if (e.keyCode === 8) {
         onBackspace();
       } else {
-        alert("you must press a letter");
+        return;
       }
     },
     [onLetter, onEnter, onBackspace]
@@ -46,7 +46,7 @@ export default Board;
 const Container = styled.div`
   margin-top: 60px;
   width: 350px;
-  height: 300px;
+  height: 350px;
   box-sizing: border-box;
   background-color: #f2f2f2;
   display: flex;

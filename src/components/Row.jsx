@@ -8,7 +8,6 @@ import { MyContext } from "./MyContext";
 function Row({ number }) {
   const { Board } = useContext(MyContext);
   const word = Board[number];
-  // console.log(word);
 
   return (
     <Container>

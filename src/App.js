@@ -11,7 +11,7 @@ function App() {
       <MainContainer>
         <Navbar>Najam Worlde</Navbar>
         <Board />
-        <Keyboard />
+        {<Keyboard />}
       </MainContainer>
     </MyContextProvider>
   );

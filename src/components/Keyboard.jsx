@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { useContext } from "react";
 import { MyContext } from "./MyContext";
+import Modal from "./Modal";
 
 function Keyboard() {
   const row1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const row2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const row3 = ["Z", "X", "C", "V", "B", "N", "M"];
-  const { onEnter, onBackspace, onLetter } = useContext(MyContext);
+  const { onEnter, onBackspace, onLetter, gameOver } = useContext(MyContext);
   const hanldeClick = (e) => {
     let ButtonPressed = e.trim();
     ButtonPressed = ButtonPressed.toLowerCase();
@@ -19,60 +20,67 @@ function Keyboard() {
       onLetter(ButtonPressed);
     }
   };
-  return (
-    <Container>
-      <Row>
-        {row1.map((letter, index) => {
-          return (
-            <Card
-              key={index}
-              value={letter}
-              onClick={() => hanldeClick(letter)}
+  const jsx =
+    gameOver.win || gameOver.boardEnd ? (
+      <Modal />
+    ) : (
+      <>
+        <Container>
+          <Row>
+            {row1.map((letter, index) => {
+              return (
+                <Card
+                  key={index}
+                  value={letter}
+                  onClick={() => hanldeClick(letter)}
+                >
+                  {letter}
+                </Card>
+              );
+            })}
+          </Row>
+          <Row>
+            {row2.map((letter, index) => {
+              return (
+                <Card
+                  key={index}
+                  value={letter}
+                  onClick={() => hanldeClick(letter)}
+                >
+                  {letter}
+                </Card>
+              );
+            })}
+          </Row>
+          <Row>
+            <BigKey
+              value="Enter"
+              onClick={() => {
+                hanldeClick("Enter");
+              }}
             >
-              {letter}
-            </Card>
-          );
-        })}
-      </Row>
-      <Row>
-        {row2.map((letter, index) => {
-          return (
-            <Card
-              key={index}
-              value={letter}
-              onClick={() => hanldeClick(letter)}
-            >
-              {letter}
-            </Card>
-          );
-        })}
-      </Row>
-      <Row>
-        <BigKey
-          value="Enter"
-          onClick={() => {
-            hanldeClick("Enter");
-          }}
-        >
-          Enter
-        </BigKey>
-        {row3.map((letter, index) => {
-          return (
-            <Card
-              key={index}
-              value={letter}
-              onClick={() => hanldeClick(letter)}
-            >
-              {letter}
-            </Card>
-          );
-        })}
-        <BigKey value="Enter" onClick={() => hanldeClick("Backspace")}>
-          Backspace
-        </BigKey>
-      </Row>
-    </Container>
-  );
+              Enter
+            </BigKey>
+            {row3.map((letter, index) => {
+              return (
+                <Card
+                  key={index}
+                  value={letter}
+                  onClick={() => hanldeClick(letter)}
+                >
+                  {letter}
+                </Card>
+              );
+            })}
+            <BigKey value="Enter" onClick={() => hanldeClick("Backspace")}>
+              Backspace
+            </BigKey>
+          </Row>
+        </Container>
+      </>
+    );
+
+  return <>{jsx}</>;
 }
 
 export default Keyboard;

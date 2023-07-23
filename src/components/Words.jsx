@@ -6,3 +6,26 @@ export const board = [
   ["", "", "", "", ""],
   ["", "", "", "", ""],
 ];
+
+export const wordleWords = [
+  "Swore",
+  "Gears",
+  "Plots",
+  "Shown",
+  "Dress",
+  "Jumps",
+  "Bumps",
+  "Climb",
+  "Chops",
+  "Flute",
+  "Flick",
+  "Grind",
+  "Spill",
+  "Blend",
+  "Crash",
+  "Swell",
+  "Tweet",
+  "Thump",
+  "Skirt",
+  "Brisk",
+];
